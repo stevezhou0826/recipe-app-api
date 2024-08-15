@@ -4,8 +4,8 @@ Database models
 
 from django.db import models
 from django.contrib.auth.models import (
-    AbstractBaseUser, 
-    BaseUserManager, 
+    AbstractBaseUser,
+    BaseUserManager,
     PermissionsMixin,
 )
 
@@ -23,6 +23,14 @@ class UserManager(BaseUserManager):
 
         return user
 
+    def create_superuser(self, email, password):
+        """Create and return a new superuser"""
+        user = self.create_user(email, password)
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using = self._db)
+
+        return user
 
 class User(AbstractBaseUser, PermissionsMixin):
     """User in the system"""
