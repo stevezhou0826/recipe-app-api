@@ -205,7 +205,7 @@ class PrivateRecipeAPITests(TestCase):
         """Test creating a recipe with new tags"""
         payload = {
             'title': 'Thai Prawn Curry',
-            'time': 30,
+            'time_minutes': 30,
             'price': Decimal('2.50'),
             'tags': [{'name': 'Thai'}, {'name': 'Dinner'}],
         }
