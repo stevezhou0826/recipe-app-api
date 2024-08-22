@@ -38,6 +38,8 @@ class RecipeViewSet(viewsets.ModelViewSet):
         elif self.action == 'upload_image':
             return serializers.RecipeImageSerializer
     
+        return self.serializer_class
+    
     def perform_create(self, serializer):
         """Create a new recipe"""
         serializer.save(user=self.request.user)
